@@ -2,14 +2,16 @@ set secure
 set shiftwidth=4 smarttab
 set expandtab
 set tabstop=8 softtabstop=0
+
 " line numbers
 set number
+
 " for assembly
 au BufRead,BufNewFile *.asm set filetype=nasm
 au BufRead,BufNewFile *.inc set filetype=nasm
 
-"Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
-"(see < http://sunaku.github.io/tmux-24bit-color.html#usage > for more information.)
+" Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
+" (see < http://sunaku.github.io/tmux-24bit-color.html#usage > for more information.)
 if (has("nvim"))
   let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 endif
@@ -18,6 +20,7 @@ if (has("termguicolors"))
 endif
 
 syntax on
+
 colorscheme onedark
 
 set nocompatible
@@ -28,6 +31,10 @@ Plug 'sheerun/vim-polyglot'
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'puremourning/vimspector'
+
+" For the file explorer
+Plug 'nvim-tree/nvim-web-devicons'
+Plug 'nvim-tree/nvim-tree.lua'
 
 call plug#end()
 
@@ -53,3 +60,6 @@ function! CheckBackspace() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
+
+" Include lua initialization config
+lua require("init")
