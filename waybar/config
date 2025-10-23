@@ -5,13 +5,13 @@
     // "width": 1280, // Waybar width
     "spacing": 4, // Gaps between modules (4px)
     // Choose the order of the modules
-    "modules-left": ["hyprland/workspaces", "sway/mode", "sway/scratchpad", "custom/media"],
+    "modules-left": ["sway/workspaces", "sway/mode", "sway/scratchpad"],
     "modules-center": ["sway/window"],
-    "modules-right": ["mpd", "idle_inhibitor", "pulseaudio", "network", "cpu", "memory", "temperature", "sway/language", "clock", "tray"],
+    "modules-right": ["mpd", "idle_inhibitor", "pulseaudio", "network", "cpu", "memory", "backlight", "temperature", "battery", "clock", "tray"],
     // Modules configuration
-    // "sway/workspaces": {
+    "sway/workspaces": {
     //     "disable-scroll": true,
-    //     "all-outputs": true,
+         "all-outputs": true,
     //     "warp-on-scroll": false,
     //     "format": "{name}: {icon}",
     //     "format-icons": {
@@ -24,7 +24,7 @@
     //         "focused": "",
     //         "default": ""
     //     }
-    // },
+    },
     "keyboard-state": {
         "numlock": true,
         "capslock": true,
@@ -84,7 +84,7 @@
     "clock": {
         // "timezone": "America/New_York",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "format": "{:%I:%M}",
+        "format": "{:%H:%M}",
         "format-alt": "{:%Y-%m-%d}"
     },
     "cpu": {
