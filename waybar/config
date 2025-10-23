@@ -102,6 +102,11 @@
         "format": "{temperatureC}°C {icon}",
         "format-icons": ["", "", ""]
     },
+    "backlight": {
+        // "device": "acpi_video1",
+        "format": "{percent}% {icon}",
+        "format-icons": ["🌑", "🌘", "🌗", "🌖", "🌕"]
+    },
     "battery": {
         "states": {
             // "good": 95,
@@ -117,7 +122,7 @@
         "format-icons": ["", "", "", "", ""]
     },
     "battery#bat2": {
-        "bat": "BAT2"
+        "bat": "BAT0"
     },
     "network": {
         // "interface": "wlp2*", // (Optional) To force the use of this interface
