@@ -1,11 +1,3 @@
-set secure
-set shiftwidth=4 smarttab
-set expandtab
-set tabstop=8 softtabstop=0
-
-" line numbers
-set number
-
 " for assembly
 au BufRead,BufNewFile *.asm set filetype=nasm
 au BufRead,BufNewFile *.inc set filetype=nasm
@@ -34,7 +26,6 @@ Plug 'puremourning/vimspector'
 
 " For the file explorer
 Plug 'nvim-tree/nvim-web-devicons'
-Plug 'nvim-tree/nvim-tree.lua'
 
 call plug#end()
 
@@ -61,5 +52,12 @@ function! CheckBackspace() abort
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
-" Include lua initialization config
-lua require("init")
+" Config put here to avoid being overwritten by plugins
+set secure
+set shiftwidth=4 smarttab
+set expandtab
+set tabstop=8
+set softtabstop=4
+
+" line numbers
+set number
