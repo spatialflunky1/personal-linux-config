@@ -53,11 +53,11 @@ function! CheckBackspace() abort
 endfunction
 
 " Config put here to avoid being overwritten by plugins
-set secure
+set secure    
 set shiftwidth=4 smarttab
-set expandtab
-set tabstop=8
-set softtabstop=4
-
-" line numbers
+set expandtab    
+set tabstop=8    
+set softtabstop=4    
+    
+" line numbers    
 set number
