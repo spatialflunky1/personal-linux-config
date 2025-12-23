@@ -6,10 +6,14 @@ include /etc/sway/config.d/*
 # Copy this to ~/.config/sway/config and edit it to your liking.
 #
 # Autostart apps
+#exec /home/jake/scripts/wm_scripts/start_pipewire.sh
+exec waybar &
 exec nm-applet &
 exec blueman-applet &
-exec waybar &
 exec dunst &
+exec lxqt-policykit-agent &
+exec proton-pass &
+exec dicons &
 
 # Read `man 5 sway` for a complete reference.
 
@@ -25,12 +29,14 @@ set $right l
 # Your preferred terminal emulator
 set $term terminator
 # Your preferred application launcher
-set $menu bemenu-run -p ""
-set $menu2 fuzzel --width 80 \
+set $menu fuzzel --width 100 \
+                  --lines 20 \
+                  --line-height=16 \
                   --background-color=000000FF \
                   --text-color=009900FF \
                   --selection-color=222222FF \
                   --selection-text-color=00FF00FF
+set $menu2 bemenu-run -p ""
 
 ### Output configuration
 #
@@ -47,10 +53,10 @@ output eDP-1 resolution 2560x1600 position 0,0 scale 1.25
 #
 # Example configuration:
 #
-# exec swayidle -w \
-#          timeout 300 'swaylock -f -c 000000' \
-#          timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
-#          before-sleep 'swaylock -f -c 000000'
+exec swayidle -w \
+         timeout 600 'swaylock -f -c 000000' \
+         timeout 900 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
+          before-sleep 'swaylock -f -c 000000'
 #
 # This will lock your screen after 300 seconds of inactivity, then turn off
 # your displays after another 300 seconds, and turn your screens back on when
@@ -108,6 +114,9 @@ input "type:touchpad" {
 
     # Exit sway (logs you out of your Wayland session)
     bindsym $mod+Shift+e exec swaymsg exit
+
+    # Lock the session
+    bindsym Ctrl+$mod+l exec swaylock -f
 #
 # Moving around:
 #
@@ -231,14 +240,16 @@ bindsym $mod+r mode "resize"
     # Special keys to adjust brightness via brightnessctl
     #bindsym --locked XF86MonBrightnessDown exec brightnessctl set 5%-
     #bindsym --locked XF86MonBrightnessUp exec brightnessctl set 5%+
-    bindsym --locked XF86MonBrightnessDown exec /home/jake/i3Scripts/brightness.sh down 10
-    bindsym --locked XF86MonBrightnessUp exec /home/jake/i3Scripts/brightness.sh up 10
+    bindsym --locked XF86MonBrightnessDown exec /home/jake/scripts/wm_scripts/brightness.sh down 2
+    bindsym --locked XF86MonBrightnessUp exec /home/jake/scripts/wm_scripts/brightness.sh up 2
     # Special key to take a screenshot with grim
     bindsym Print exec grim
     # Screenshots
     bindsym Mod4+Shift+s exec grim -g "$(slurp)" - | wl-copy
     bindsym Mod4+Shift+Print exec grim -g "$(slurp)" $(xdg-user-dir PICTURES)/ps_$(date +"%Y%m%d%H%M%S").png
     bindsym Mod4+Print exec grim $(xdg-user-dir PICTURES)/ps_$(date +"%Y%m%d%H%M%S").png
+    # Hibernation
+    bindsym $mod+Shift+T exec systemctl hibernate
 
 #
 # Status Bar:
