@@ -26,6 +26,8 @@ Plug 'nvim-tree/nvim-tree.lua'
 Plug 'nvim-tree/nvim-web-devicons'
 
 Plug 'hedyhli/outline.nvim'
+" For the file explorer
+Plug 'nvim-tree/nvim-web-devicons'
 
 call plug#end()
 
@@ -63,4 +65,4 @@ set softtabstop=4
 set number
 
 " Read from lua config at ~/.config/nvim/lua/init.lua
-lua require('init')
+"lua require('init')
