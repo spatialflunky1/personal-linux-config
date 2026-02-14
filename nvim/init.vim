@@ -4,12 +4,7 @@ au BufRead,BufNewFile *.inc set filetype=nasm
 
 " Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
 " (see < http://sunaku.github.io/tmux-24bit-color.html#usage > for more information.)
-if (has("nvim"))
-  let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-endif
-if (has("termguicolors"))
-  set termguicolors
-endif
+
 
 syntax on
 
@@ -19,13 +14,18 @@ set nocompatible
 
 call plug#begin()
 
+" A set of language packs
 Plug 'sheerun/vim-polyglot'
 
+" Various LSP support
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'puremourning/vimspector'
 
-" For the file explorer
+" nvim-tree file explorer
+Plug 'nvim-tree/nvim-tree.lua'
 Plug 'nvim-tree/nvim-web-devicons'
+
+Plug 'hedyhli/outline.nvim'
 
 call plug#end()
 
@@ -61,3 +61,6 @@ set softtabstop=4
     
 " line numbers    
 set number
+
+" Read from lua config at ~/.config/nvim/lua/init.lua
+lua require('init')

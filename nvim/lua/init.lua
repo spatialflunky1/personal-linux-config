@@ -1,3 +1,7 @@
+--
+--- nvim-tree
+--
+
 -- Disables netrw (the directory browser), required for nvim tree
 vim.g.loaded_netrw       = 1
 vim.g.loaded_netrwPlugin = 1
@@ -15,9 +19,9 @@ local function open_nvim_tree()
 end
 
 -- Enable nvim-tree on startup with the previously defined function
-vim.api.nvim_create_autocmd("VimEnter", { 
-  callback = open_nvim_tree
-})
+--vim.api.nvim_create_autocmd("VimEnter", { 
+--  callback = open_nvim_tree
+--})
 
 -- Function to close nvim-tree along with the last buffer
 local function tab_win_closed(winnr)
@@ -56,3 +60,27 @@ vim.api.nvim_create_autocmd("WinClosed", {
   end,
   nested = true
 })
+
+--
+--- Keymapping Helper Function
+--
+function nnoremap(rhs, lhs, desc)
+  vim.keymap.set("n", rhs, lhs, { noremap=true, silent=true })
+end
+
+--
+--- Symbol Outline
+--
+require("outline").setup()
+
+--
+--- Keymapping
+--
+
+-- Set leader key
+vim.g.mapleader = ';'
+vim.g.maplocalleader = ';'
+
+-- Keymaps
+nnoremap("<leader>nn", "<cmd>NvimTreeToggle<cr>", "Open file browser")
+nnoremap("<leader>nf", "<cmd>NvimTreeFindFile<cr>", "Find in file browser")

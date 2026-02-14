@@ -2,5 +2,23 @@
     "clangd.arguments": [
       "--header-insertion=never"
     ],
-    "inlayHint.enable": false
+    "inlayHint.enable": false,
+
+    // coc-java config
+    "semanticTokens.enable": true,
+    "java.configuration.runtimes": [
+    {
+        "name": "JavaSE-1.8",
+        "path": "/usr/lib/jvm/java-8-openjdk",
+    },
+    {
+        "name": "JavaSE-11",
+        "path": "/usr/lib/jvm/java-11-openjdk",
+    },
+    {
+        "name": "JavaSE-21",
+        "path": "/usr/lib/jvm/java-21-openjdk",
+        "default": true
+    },
+]
 }
